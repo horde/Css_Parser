@@ -1,0 +1,144 @@
+---
+1.0.12:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2017-10-20
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes:
+1.0.11:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2016-07-02
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Update to PHP-CSS-Parser 7.0.3.
+1.0.10:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2016-04-14
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Fix upstream regression causing infite loops with empty CSS documents (Bug #14318).
+1.0.9:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2016-04-05
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Update to PHP-CSS-Parser 7.0.2 (Request #14297).
+1.0.8:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2016-02-01
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Mark PHP 7 as supported.
+1.0.7:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2015-07-31
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Prevent segfault due to non-ascii characters on some systems.
+    [jan] Fix PHP7 error because of reserved "String".
+1.0.6:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2015-01-13
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [mms] Update PHP-CSS-Parser lib to latest dev to fix issues on PHP < 5.3.9 (Bug #13792).
+1.0.5:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2015-01-08
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [mms] Use composer to generate the distributed version of the PHP-CSS-Parser package.
+1.0.4:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2014-02-20
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [mms] Fixed comments parsing.
+1.0.3:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2013-10-23
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [mms] Merge from upstream - handle keywords/dimensions case-insensitively.
+1.0.2:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2013-10-15
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [mms] Performance optimizations in the parser.
+1.0.1:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2013-08-22
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    [jan] Fix certain sizes reduced by factor ten (Bug #12462).
+1.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2013-04-08
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    First release for Horde 5.
