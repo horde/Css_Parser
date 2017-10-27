@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-07-02</date>
+ <date>2017-10-27</date>
  <version>
   <release>1.0.12</release>
   <api>1.0.0</api>
@@ -131,6 +131,7 @@
        </dir> <!-- /bundle/vendor/sabberworm/php-css-parser/tests -->
        <file name=".travis.yml" role="php" />
        <file name="CHANGELOG.md" role="php" />
+       <file name="composer.json" role="php" />
        <file name="Doxyfile" role="php" />
        <file name="phpunit.xml" role="php" />
        <file name="README.md" role="php" />
@@ -200,6 +201,7 @@
    <install as="Horde/Css/Parser/vendor/composer/LICENSE" name="bundle/vendor/composer/LICENSE" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/.travis.yml" name="bundle/vendor/sabberworm/php-css-parser/.travis.yml" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/CHANGELOG.md" name="bundle/vendor/sabberworm/php-css-parser/CHANGELOG.md" />
+   <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/composer.json" name="bundle/vendor/sabberworm/php-css-parser/composer.json" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/Doxyfile" name="bundle/vendor/sabberworm/php-css-parser/Doxyfile" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/phpunit.xml" name="bundle/vendor/sabberworm/php-css-parser/phpunit.xml" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/README.md" name="bundle/vendor/sabberworm/php-css-parser/README.md" />
@@ -441,7 +443,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-07-02</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
