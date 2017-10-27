@@ -1,0 +1,91 @@
+-----------
+v1.0.12-git
+-----------
+
+
+-------
+v1.0.11
+-------
+
+[jan] Update to PHP-CSS-Parser 7.0.3.
+
+
+-------
+v1.0.10
+-------
+
+[jan] Fix upstream regression causing infite loops with empty CSS documents
+      (Bug #14318).
+
+
+------
+v1.0.9
+------
+
+[jan] Update to PHP-CSS-Parser 7.0.2 (Request #14297).
+
+
+------
+v1.0.8
+------
+
+[jan] Mark PHP 7 as supported.
+
+
+------
+v1.0.7
+------
+
+[jan] Prevent segfault due to non-ascii characters on some systems.
+[jan] Fix PHP7 error because of reserved "String".
+
+
+------
+v1.0.6
+------
+
+[mms] Update PHP-CSS-Parser lib to latest dev to fix issues on PHP < 5.3.9
+      (Bug #13792).
+
+
+------
+v1.0.5
+------
+
+[mms] Use composer to generate the distributed version of the PHP-CSS-Parser
+      package.
+
+
+------
+v1.0.4
+------
+
+[mms] Fixed comments parsing.
+
+
+------
+v1.0.3
+------
+
+[mms] Merge from upstream - handle keywords/dimensions case-insensitively.
+
+
+------
+v1.0.2
+------
+
+[mms] Performance optimizations in the parser.
+
+
+------
+v1.0.1
+------
+
+[jan] Fix certain sizes reduced by factor ten (Bug #12462).
+
+
+------
+v1.0.0
+------
+
+First release for Horde 5.
