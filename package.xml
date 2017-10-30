@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-27</date>
+ <date>2017-10-30</date>
  <version>
   <release>1.0.12</release>
   <api>1.0.0</api>
@@ -144,6 +144,7 @@
     <dir name="Horde">
      <dir name="Css">
       <dir name="Parser">
+       <file name="CHANGES" role="doc" />
        <file name="COPYING" role="doc" />
        <file name="EXPAT_LICENSE" role="doc" />
       </dir> <!-- /doc/Horde/Css/Parser -->
@@ -267,6 +268,7 @@
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/ParserTest.php" name="bundle/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/ParserTest.php" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/RuleSet/DeclarationBlockTest.php" name="bundle/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/RuleSet/DeclarationBlockTest.php" />
    <install as="Horde/Css/Parser/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/RuleSet/LenientParsingTest.php" name="bundle/vendor/sabberworm/php-css-parser/tests/Sabberworm/CSS/RuleSet/LenientParsingTest.php" />
+   <install as="CHANGES" name="doc/Horde/Css/Parser/CHANGES" />
    <install as="COPYING" name="doc/Horde/Css/Parser/COPYING" />
    <install as="EXPAT_LICENSE" name="doc/Horde/Css/Parser/EXPAT_LICENSE" />
    <install as="Horde/Css/Parser.php" name="lib/Horde/Css/Parser.php" />
@@ -443,7 +445,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-27</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
