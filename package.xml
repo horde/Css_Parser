@@ -165,7 +165,6 @@
        <file name="AllTests.php" role="test" />
        <file name="bootstrap.php" role="test" />
        <file name="ParserTest.php" role="test" />
-       <file name="phpunit.xml" role="test" />
       </dir> <!-- /test/Horde/Css/Parser -->
      </dir> <!-- /test/Horde/Css -->
     </dir> <!-- /test/Horde -->
@@ -275,8 +274,7 @@
    <install as="Horde/Css/Parser/AllTests.php" name="test/Horde/Css/Parser/AllTests.php" />
    <install as="Horde/Css/Parser/bootstrap.php" name="test/Horde/Css/Parser/bootstrap.php" />
    <install as="Horde/Css/Parser/ParserTest.php" name="test/Horde/Css/Parser/ParserTest.php" />
-   <install as="Horde/Css/Parser/phpunit.xml" name="test/Horde/Css/Parser/phpunit.xml" />
-  </filelist>
+   </filelist>
  </phprelease>
  <changelog>
   <release>
