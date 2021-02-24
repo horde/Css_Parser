@@ -29,9 +29,6 @@
     "autoload": {
         "psr-0": {
             "Horde_Css_Parser": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Css\\Parser\\": "src/"
         }
     }
 }
