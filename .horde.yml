@@ -25,7 +25,7 @@ license:
   uri: http://www.horde.org/licenses/lgpl21
 dependencies:
   required:
-    php: ^5.3.2 || ^7
+    php: ^7
   optional:
     ext:
       mbstring: '*'

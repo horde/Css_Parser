@@ -21,7 +21,7 @@
     ],
     "require": {
         "horde/horde-installer-plugin": "*",
-        "php": "^5.3.2 || ^7"
+        "php": "^7"
     },
     "suggest": {
         "ext-mbstring": "*"
