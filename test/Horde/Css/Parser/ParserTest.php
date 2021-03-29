@@ -7,6 +7,9 @@
  * @package    Css_Parser
  * @subpackage UnitTests
  */
+namespace Horde\Css\Parser;
+use PHPUnit\Framework\TestCase;
+use \Horde_Css_Parser;
 
 /**
  * @author     Michael Slusarz <slusarz@horde.org>
@@ -16,7 +19,7 @@
  * @package    Css_Parser
  * @subpackage UnitTests
  */
-class Horde_Css_Parser_ParserTest extends PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
     public function testDoubleAsteriskAtBeginningOfComment()
     {
