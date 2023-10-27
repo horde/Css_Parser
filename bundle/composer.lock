@@ -1,24 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "977c8b36e556f35f738b71db4eaefcf9",
     "content-hash": "f672a797814ac09b2407fe37fdc39e28",
     "packages": [
         {
             "name": "sabberworm/php-css-parser",
-            "version": "7.0.3",
+            "version": "7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabberworm/PHP-CSS-Parser.git",
-                "reference": "7642a0e1cabd81d95f91ebbea7d6de988c59edd3"
+                "reference": "7f81cfd7c81a6f6f5ec46571b587a206141a58bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/7642a0e1cabd81d95f91ebbea7d6de988c59edd3",
-                "reference": "7642a0e1cabd81d95f91ebbea7d6de988c59edd3",
+                "url": "https://api.github.com/repos/sabberworm/PHP-CSS-Parser/zipball/7f81cfd7c81a6f6f5ec46571b587a206141a58bb",
+                "reference": "7f81cfd7c81a6f6f5ec46571b587a206141a58bb",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +45,11 @@
                 "parser",
                 "stylesheet"
             ],
-            "time": "2016-04-26 20:16:57"
+            "support": {
+                "issues": "https://github.com/sabberworm/PHP-CSS-Parser/issues",
+                "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/7.0.4"
+            },
+            "time": "2020-06-01T09:08:05+00:00"
         }
     ],
     "packages-dev": [],
@@ -56,5 +59,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
