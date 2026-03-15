@@ -9,7 +9,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |+
-    
 2.0.0alpha4:
   api: 2.0.0alpha1
   state:
@@ -52,6 +51,26 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+2.0.0-beta1:
+  api: 2.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-03-15
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    Merge pull request #1 from horde/dependabot/composer/bundle/sabberworm/php-css-parser-7.0.4
+    Bump sabberworm/php-css-parser from 7.0.3 to 7.0.4 in /bundle
+    Development mode for Css_Parser-2.0.0alpha5
+    Released Css_Parser-2.0.0alpha4
+    Update metadata and workflows for PHP 8 support
+    Add CI job for satis repo update
+    Update bootstrap.php
+    ci.yml added, bootstrap.php adjusted
+    no errors left
+    Development mode for Css_Parser-2.0.0alpha5
 1.0.11:
   api: 1.0.0
   state:

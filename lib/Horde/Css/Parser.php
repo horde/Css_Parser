@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2013-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2013-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -50,7 +51,7 @@ class Horde_Css_Parser
      * @param string $css                       CSS data.
      * @param Sabberworm\CSS\Settings $charset  Parser settings.
      */
-    public function __construct($css, Sabberworm\CSS\Settings $settings = null)
+    public function __construct($css, ?Sabberworm\CSS\Settings $settings = null)
     {
         if (!strlen($css)) {
             $this->doc = new Sabberworm\CSS\CSSList\Document();
@@ -74,8 +75,8 @@ class Horde_Css_Parser
     public function compress()
     {
         return str_replace(
-            array("\n", ' {', ': ', ';}', ', '),
-            array('', '{', ':', '}', ','),
+            ["\n", ' {', ': ', ';}', ', '],
+            ['', '{', ':', '}', ','],
             strval($this->doc)
         );
     }

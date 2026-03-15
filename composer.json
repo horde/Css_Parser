@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/css_parser",
     "description": "CSS parser library",
     "type": "library",
@@ -12,15 +11,10 @@
             "role": "lead"
         }
     ],
-    "time": "2022-11-05",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://horde-satis.maintaina.com"
-        }
-    ],
+    "time": "2026-03-15",
+    "repositories": [],
     "require": {
-        "php": "^7.4 || ^8"
+        "php": "^8"
     },
     "require-dev": {},
     "suggest": {
@@ -37,8 +31,11 @@
         }
     },
     "config": {
-        "allow-plugins": {
-            "horde/horde-installer-plugin": true
+        "allow-plugins": {}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-FRAMEWORK_6_0": "2.x-dev"
         }
     }
 }

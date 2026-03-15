@@ -1,15 +1,18 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * @category   Horde
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
  * @package    Css_Parser
  * @subpackage UnitTests
  */
+
 namespace Horde\Css\Parser;
+
 use PHPUnit\Framework\TestCase;
-use \Horde_Css_Parser;
+use Horde_Css_Parser;
 
 /**
  * @author     Michael Slusarz <slusarz@horde.org>
@@ -18,6 +21,7 @@ use \Horde_Css_Parser;
  * @ignore
  * @package    Css_Parser
  * @subpackage UnitTests
+ * @coversNothing
  */
 class ParserTest extends TestCase
 {
