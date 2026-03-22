@@ -16,13 +16,6 @@ declare(strict_types=1);
 
 namespace Horde\Css\Parser;
 
-// Load bundled Sabberworm library
-if (file_exists(__DIR__ . '/../../../../bundle/vendor/autoload.php')) {
-    require_once __DIR__ . '/../../../../bundle/vendor/autoload.php';
-} elseif (file_exists(__DIR__ . '/../../../../lib/Horde/Css/Parser/vendor/autoload.php')) {
-    require_once __DIR__ . '/../../../../lib/Horde/Css/Parser/vendor/autoload.php';
-}
-
 use Exception;
 use Horde\Exception\HordeThrowable;
 use Sabberworm\CSS\CSSList\Document;
