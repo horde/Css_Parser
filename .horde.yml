@@ -15,8 +15,8 @@ authors:
     active: false
     role: lead
 version:
-  release: 2.0.0-beta1
-  api: 2.0.0alpha1
+  release: 2.0.0-beta4
+  api: 2.0.0-beta1
 state:
   release: beta
   api: alpha
@@ -29,4 +29,10 @@ dependencies:
   optional:
     ext:
       mbstring: '*'
+autoload:
+  psr-4:
+    Horde\Css\Parser\: src/
+  classmap:
+    - lib/
+    - bundle/vendor/sabberworm/php-css-parser/lib/
 vendor: horde

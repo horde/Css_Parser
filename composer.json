@@ -11,7 +11,7 @@
             "role": "lead"
         }
     ],
-    "time": "2026-03-21",
+    "time": "2026-03-22",
     "repositories": [],
     "require": {
         "php": "^8"
@@ -21,16 +21,17 @@
         "ext-mbstring": "*"
     },
     "autoload": {
-        "psr-0": {
-            "Horde_Css_Parser": "lib/"
-        },
         "psr-4": {
             "Horde\\Css\\Parser\\": "src/"
-        }
+        },
+        "classmap": [
+            "lib/",
+            "bundle/vendor/sabberworm/php-css-parser/lib/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Horde\\Css\\Parser\\Test\\": "test/unit/"
+            "Horde\\Css\\Parser\\Test\\": "test/"
         }
     },
     "config": {
