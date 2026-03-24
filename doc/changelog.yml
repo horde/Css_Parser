@@ -51,6 +51,17 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+2.0.0-beta5:
+  api: 2.0.0-beta5
+  state:
+    release: beta
+    api: beta
+  date: 2026-03-24
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    chore: Drop internal class loader in Css Parser class.
 2.0.0-beta4:
   api: 2.0.0-beta4
   state:
