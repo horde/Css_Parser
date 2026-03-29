@@ -34,14 +34,14 @@ class Parser {
 	private $blockRules;
 	private $aSizeUnits;
 
-	public function __construct($sText, Settings $oParserSettings = null) {
+	public function __construct($sText, ?Settings $oParserSettings = null) {
 		$this->iCurrentPosition = 0;
 		if ($oParserSettings === null) {
 			$oParserSettings = Settings::create();
 		}
 		$this->oParserSettings = $oParserSettings;
 		if ($this->oParserSettings->bMultibyteSupport) {
-			$this->aText = preg_split('//u', $sText, null, PREG_SPLIT_NO_EMPTY);
+			$this->aText = preg_split('//u', $sText, -1, PREG_SPLIT_NO_EMPTY);
 		} else {
 			if($sText === '') {
 				$this->aText = array();
