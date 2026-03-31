@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace Horde\Css\Parser;
 
 use Exception;
+use Horde\Exception\DetailsTrait;
 use Horde\Exception\HordeThrowable;
 use Sabberworm\CSS\CSSList\Document;
 use Sabberworm\CSS\Parser as SabberwormParser;
@@ -56,7 +57,9 @@ final class Parser
             $parser = new SabberwormParser($css, $settings ?? Settings::create());
             $this->document = $parser->parse();
         } catch (Exception $e) {
-            throw new class ($e->getMessage(), (int) $e->getCode(), $e) extends Exception implements HordeThrowable {};
+            throw new class ($e->getMessage(), (int) $e->getCode(), $e) extends Exception implements HordeThrowable {
+                use DetailsTrait;
+            };
         }
     }
 
