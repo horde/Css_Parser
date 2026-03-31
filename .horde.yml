@@ -26,6 +26,8 @@ license:
 dependencies:
   required:
     php: ^8
+    composer:
+      sabberworm/php-css-parser: ^8.9
   optional:
     ext:
       mbstring: '*'
@@ -34,5 +36,4 @@ autoload:
     Horde\Css\Parser\: src/
   classmap:
     - lib/
-    - bundle/vendor/sabberworm/php-css-parser/lib/
 vendor: horde
