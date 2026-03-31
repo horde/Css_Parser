@@ -11,15 +11,14 @@
             "role": "lead"
         }
     ],
-    "time": "2026-03-24",
+    "time": "2026-03-31",
     "repositories": [],
     "require": {
         "php": "^8",
-        "sabberworm/php-css-parser": "8.9.0"
+        "sabberworm/php-css-parser": "^8.9",
+        "horde/exception": "^3 || dev-FRAMEWORK_6_0"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^12"
-    },
+    "require-dev": {},
     "suggest": {
         "ext-mbstring": "*"
     },
@@ -43,6 +42,5 @@
         "branch-alias": {
             "dev-FRAMEWORK_6_0": "2.x-dev"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

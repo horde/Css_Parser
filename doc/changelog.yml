@@ -51,6 +51,23 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+2.0.0-beta6:
+  api: 2.0.0-beta6
+  state:
+    release: beta
+    api: beta
+  date: 2026-03-31
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    fix: Add missing DetailsTrait to exception. Reaches PHPStan level 9.
+    style: php-cs-fixer run
+    feat: keepOnlyUrlRules, keepOnlyRulesByName and accompanying tests
+    chore(composer): composer.json will be updated from .horde.yml
+    Unbundle sabberworm/php-css-parser
+    chore: it was good while it lasted
+    fix: hotfix null issue in bundled css parser.
 2.0.0-beta5:
   api: 2.0.0-beta5
   state:
