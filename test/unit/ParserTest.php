@@ -117,25 +117,25 @@ class ParserTest extends TestCase
     public function testComplexCss(): void
     {
         $css = <<<CSS
-@import "base.css";
+            @import "base.css";
 
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(red, blue), url(bg.png);
-    color: #333;
-    cursor: default;
-}
+            body {
+                font-family: Arial, sans-serif;
+                background: linear-gradient(red, blue), url(bg.png);
+                color: #333;
+                cursor: default;
+            }
 
-.header {
-    margin: 0;
-    padding: 10px 20px;
-    background-image: url("header.jpg");
-}
+            .header {
+                margin: 0;
+                padding: 10px 20px;
+                background-image: url("header.jpg");
+            }
 
-footer {
-    border-top: 1px solid #ccc;
-}
-CSS;
+            footer {
+                border-top: 1px solid #ccc;
+            }
+            CSS;
 
         $parser = new Parser($css);
 
@@ -165,10 +165,10 @@ CSS;
     public function testKeepOnlyUrlRules(): void
     {
         $css = <<<'CSS'
-.safe { color: red; }
-.tracking { background: url("pixel.gif"); }
-.more-safe { margin: 10px; }
-CSS;
+            .safe { color: red; }
+            .tracking { background: url("pixel.gif"); }
+            .more-safe { margin: 10px; }
+            CSS;
 
         $parser = new Parser($css);
         $urlOnly = $parser->keepOnlyUrlRules();
@@ -183,8 +183,8 @@ CSS;
     public function testKeepOnlyRulesByName(): void
     {
         $css = <<<'CSS'
-.normal { color: red; cursor: pointer; margin: 10px; }
-CSS;
+            .normal { color: red; cursor: pointer; margin: 10px; }
+            CSS;
 
         $parser = new Parser($css);
         $cursorOnly = $parser->keepOnlyRulesByName('cursor');
@@ -198,12 +198,12 @@ CSS;
     public function testKeepOnlyDangerousCss(): void
     {
         $css = <<<'CSS'
-@import url("external.css");
-.safe { color: red; margin: 10px; }
-.tracking { background: url("pixel.gif"); }
-.cursor-rule { cursor: none; }
-.more-safe { font-size: 12px; }
-CSS;
+            @import url("external.css");
+            .safe { color: red; margin: 10px; }
+            .tracking { background: url("pixel.gif"); }
+            .cursor-rule { cursor: none; }
+            .more-safe { font-size: 12px; }
+            CSS;
 
         $parser = new Parser($css);
         $dangerous = $parser->keepOnlyDangerousCss('cursor');
@@ -222,10 +222,10 @@ CSS;
     public function testKeepOnlyDangerousCssWithoutNamedRules(): void
     {
         $css = <<<'CSS'
-@import url("external.css");
-.safe { color: red; }
-.tracking { background: url("pixel.gif"); }
-CSS;
+            @import url("external.css");
+            .safe { color: red; }
+            .tracking { background: url("pixel.gif"); }
+            CSS;
 
         $parser = new Parser($css);
         $dangerous = $parser->keepOnlyDangerousCss();
@@ -236,4 +236,3 @@ CSS;
         $this->assertStringNotContainsString('color', $result);
     }
 }
-

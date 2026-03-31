@@ -19,6 +19,7 @@ use Horde\Css\Parser\Import;
 use Horde\Css\Parser\Url;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Error;
 
 /**
  * Tests for value objects (Import, Url).
@@ -48,7 +49,7 @@ class ValueObjectTest extends TestCase
     {
         $import = new Import('test.css');
 
-        $this->expectException(\Error::class);
+        $this->expectException(Error::class);
         $import->url = 'other.css'; // @phpstan-ignore-line
     }
 
@@ -56,7 +57,7 @@ class ValueObjectTest extends TestCase
     {
         $url = new Url('image.png');
 
-        $this->expectException(\Error::class);
+        $this->expectException(Error::class);
         $url->url = 'other.png'; // @phpstan-ignore-line
     }
 }

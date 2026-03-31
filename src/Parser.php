@@ -56,7 +56,7 @@ final class Parser
             $parser = new SabberwormParser($css, $settings ?? Settings::create());
             $this->document = $parser->parse();
         } catch (Exception $e) {
-            throw new class($e->getMessage(), (int)$e->getCode(), $e) extends Exception implements HordeThrowable {};
+            throw new class ($e->getMessage(), (int) $e->getCode(), $e) extends Exception implements HordeThrowable {};
         }
     }
 
