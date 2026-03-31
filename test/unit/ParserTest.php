@@ -161,4 +161,79 @@ CSS;
         $this->assertStringContainsString('color:#333', $result);
         $this->assertStringContainsString('border-top', $result);
     }
+
+    public function testKeepOnlyUrlRules(): void
+    {
+        $css = <<<'CSS'
+.safe { color: red; }
+.tracking { background: url("pixel.gif"); }
+.more-safe { margin: 10px; }
+CSS;
+
+        $parser = new Parser($css);
+        $urlOnly = $parser->keepOnlyUrlRules();
+
+        $result = $urlOnly->compress();
+        $this->assertStringContainsString('url', $result);
+        $this->assertStringContainsString('background', $result);
+        $this->assertStringNotContainsString('color:red', $result);
+        $this->assertStringNotContainsString('margin', $result);
+    }
+
+    public function testKeepOnlyRulesByName(): void
+    {
+        $css = <<<'CSS'
+.normal { color: red; cursor: pointer; margin: 10px; }
+CSS;
+
+        $parser = new Parser($css);
+        $cursorOnly = $parser->keepOnlyRulesByName('cursor');
+
+        $result = $cursorOnly->compress();
+        $this->assertStringContainsString('cursor', $result);
+        $this->assertStringNotContainsString('color', $result);
+        $this->assertStringNotContainsString('margin', $result);
+    }
+
+    public function testKeepOnlyDangerousCss(): void
+    {
+        $css = <<<'CSS'
+@import url("external.css");
+.safe { color: red; margin: 10px; }
+.tracking { background: url("pixel.gif"); }
+.cursor-rule { cursor: none; }
+.more-safe { font-size: 12px; }
+CSS;
+
+        $parser = new Parser($css);
+        $dangerous = $parser->keepOnlyDangerousCss('cursor');
+
+        $result = $dangerous->compress();
+        // Should contain dangerous CSS
+        $this->assertStringContainsString('@import', $result);
+        $this->assertStringContainsString('url', $result);
+        $this->assertStringContainsString('cursor', $result);
+        // Should NOT contain safe CSS
+        $this->assertStringNotContainsString('color:red', $result);
+        $this->assertStringNotContainsString('margin', $result);
+        $this->assertStringNotContainsString('font-size', $result);
+    }
+
+    public function testKeepOnlyDangerousCssWithoutNamedRules(): void
+    {
+        $css = <<<'CSS'
+@import url("external.css");
+.safe { color: red; }
+.tracking { background: url("pixel.gif"); }
+CSS;
+
+        $parser = new Parser($css);
+        $dangerous = $parser->keepOnlyDangerousCss();
+
+        $result = $dangerous->compress();
+        $this->assertStringContainsString('@import', $result);
+        $this->assertStringContainsString('url', $result);
+        $this->assertStringNotContainsString('color', $result);
+    }
 }
+

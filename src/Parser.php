@@ -198,6 +198,127 @@ final class Parser
     }
 
     /**
+     * Keep ONLY CSS rules that contain URL values (inverse of removeUrlRules).
+     *
+     * Returns a new Parser instance containing only rules with url() references.
+     * All other rules are removed. Useful for extracting potentially dangerous
+     * CSS for optional user loading.
+     *
+     * Returns a new Parser instance with only URL rules (immutable).
+     *
+     * @return self New Parser instance containing only URL rules
+     */
+    public function keepOnlyUrlRules(): self
+    {
+        $newDocument = $this->deepCloneDocument();
+        foreach ($newDocument->getContents() as $element) {
+            if ($element instanceof RuleSet) {
+                $toRemove = [];
+                foreach ($element->getRules() as $rule) {
+                    // Remove rules that DON'T contain URLs
+                    if (!$this->valueContainsUrl($rule->getValue())) {
+                        $toRemove[] = $rule;
+                    }
+                }
+                foreach ($toRemove as $rule) {
+                    $element->removeRule($rule);
+                }
+            }
+        }
+        return $this->fromDocument($newDocument);
+    }
+
+    /**
+     * Keep ONLY CSS rules matching specific property names (inverse of removeRulesByName).
+     *
+     * Returns a new Parser instance containing only the named properties.
+     * All other rules are removed. Useful for extracting specific CSS
+     * properties for optional user loading.
+     *
+     * Returns a new Parser instance with only named rules (immutable).
+     *
+     * @param string ...$names CSS property names to keep
+     * @return self New Parser instance containing only named rules
+     */
+    public function keepOnlyRulesByName(string ...$names): self
+    {
+        $newDocument = $this->deepCloneDocument();
+        foreach ($newDocument->getContents() as $element) {
+            if ($element instanceof RuleSet) {
+                $toRemove = [];
+                foreach ($element->getRules() as $rule) {
+                    // Remove rules that DON'T match the names
+                    if (!in_array($rule->getRule(), $names, true)) {
+                        $toRemove[] = $rule;
+                    }
+                }
+                foreach ($toRemove as $rule) {
+                    $element->removeRule($rule);
+                }
+            }
+        }
+        return $this->fromDocument($newDocument);
+    }
+
+    /**
+     * Keep ONLY @import statements and rules with URLs or specific names.
+     *
+     * Combined method for extracting "dangerous" CSS that might be blocked.
+     * Keeps imports, URL rules, and optionally named rules (e.g., 'cursor').
+     * All other content is removed.
+     *
+     * Returns a new Parser instance with only dangerous CSS (immutable).
+     *
+     * @param string ...$ruleNames Optional CSS property names to also keep
+     * @return self New Parser instance containing only imports, URLs, and named rules
+     */
+    public function keepOnlyDangerousCss(string ...$ruleNames): self
+    {
+        $newDocument = $this->deepCloneDocument();
+
+        // Remove all non-import top-level elements except RuleSets
+        $toRemoveTopLevel = [];
+        foreach ($newDocument->getContents() as $element) {
+            if (!($element instanceof SabberwormImport) && !($element instanceof RuleSet)) {
+                $toRemoveTopLevel[] = $element;
+            }
+        }
+        foreach ($toRemoveTopLevel as $element) {
+            $newDocument->remove($element);
+        }
+
+        // In RuleSets, keep only URL rules and named rules
+        foreach ($newDocument->getContents() as $element) {
+            if ($element instanceof RuleSet) {
+                $toRemove = [];
+                foreach ($element->getRules() as $rule) {
+                    $keepRule = false;
+
+                    // Keep if contains URL
+                    if ($this->valueContainsUrl($rule->getValue())) {
+                        $keepRule = true;
+                    }
+
+                    // Keep if matches named rules
+                    if (!empty($ruleNames) && in_array($rule->getRule(), $ruleNames, true)) {
+                        $keepRule = true;
+                    }
+
+                    // Remove safe rules
+                    if (!$keepRule) {
+                        $toRemove[] = $rule;
+                    }
+                }
+                foreach ($toRemove as $rule) {
+                    $element->removeRule($rule);
+                }
+            }
+        }
+
+        return $this->fromDocument($newDocument);
+    }
+
+    /**
      * Extract CSS rules matching specific selectors.
      *
      * Returns serialized CSS rules (property:value pairs) for declaration
