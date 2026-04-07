@@ -1,4 +1,18 @@
 ---
+2.0.0beta6:
+  api: 2.0.0beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-07
+  license:
+    identifier: LGPL-2.1-only
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    Add dual Sabberworm 8.x/9.x support via runtime autodetection.
+    Modern API (src/Parser.php) now works with both Sabberworm 8.9+ and 9.0+.
+    Legacy API (lib/Horde/Css/Parser.php) remains locked to Sabberworm 8.x.
+    See doc/SABBERWORM_COMPATIBILITY.md for migration guide.
 2.0.0alpha5:
   api: 2.0.0alpha1
   state:

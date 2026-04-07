@@ -20,6 +20,7 @@ use Exception;
 use Horde\Exception\DetailsTrait;
 use Horde\Exception\HordeThrowable;
 use Sabberworm\CSS\CSSList\Document;
+use Sabberworm\CSS\OutputFormat;
 use Sabberworm\CSS\Parser as SabberwormParser;
 use Sabberworm\CSS\Property\Import as SabberwormImport;
 use Sabberworm\CSS\RuleSet\DeclarationBlock;
@@ -27,6 +28,7 @@ use Sabberworm\CSS\RuleSet\RuleSet;
 use Sabberworm\CSS\Settings;
 use Sabberworm\CSS\Value\RuleValueList;
 use Sabberworm\CSS\Value\URL as SabberwormUrl;
+use Throwable;
 
 /**
  * Modern CSS parser wrapper.
@@ -155,7 +157,7 @@ final class Parser
     {
         $newDocument = $this->deepCloneDocument();
         foreach ($newDocument->getContents() as $element) {
-            if ($element instanceof RuleSet) {
+            if ($this->isRuleContainer($element)) {
                 $toRemove = [];
                 foreach ($element->getRules() as $rule) {
                     if ($this->valueContainsUrl($rule->getValue())) {
@@ -185,10 +187,10 @@ final class Parser
     {
         $newDocument = $this->deepCloneDocument();
         foreach ($newDocument->getContents() as $element) {
-            if ($element instanceof RuleSet) {
+            if ($this->isRuleContainer($element)) {
                 $toRemove = [];
                 foreach ($element->getRules() as $rule) {
-                    if (in_array($rule->getRule(), $names, true)) {
+                    if (in_array($this->getRulePropertyName($rule), $names, true)) {
                         $toRemove[] = $rule;
                     }
                 }
@@ -215,7 +217,7 @@ final class Parser
     {
         $newDocument = $this->deepCloneDocument();
         foreach ($newDocument->getContents() as $element) {
-            if ($element instanceof RuleSet) {
+            if ($this->isRuleContainer($element)) {
                 $toRemove = [];
                 foreach ($element->getRules() as $rule) {
                     // Remove rules that DON'T contain URLs
@@ -247,11 +249,11 @@ final class Parser
     {
         $newDocument = $this->deepCloneDocument();
         foreach ($newDocument->getContents() as $element) {
-            if ($element instanceof RuleSet) {
+            if ($this->isRuleContainer($element)) {
                 $toRemove = [];
                 foreach ($element->getRules() as $rule) {
                     // Remove rules that DON'T match the names
-                    if (!in_array($rule->getRule(), $names, true)) {
+                    if (!in_array($this->getRulePropertyName($rule), $names, true)) {
                         $toRemove[] = $rule;
                     }
                 }
@@ -279,10 +281,10 @@ final class Parser
     {
         $newDocument = $this->deepCloneDocument();
 
-        // Remove all non-import top-level elements except RuleSets
+        // Remove all non-import top-level elements except RuleSets/DeclarationBlocks
         $toRemoveTopLevel = [];
         foreach ($newDocument->getContents() as $element) {
-            if (!($element instanceof SabberwormImport) && !($element instanceof RuleSet)) {
+            if (!($element instanceof SabberwormImport) && !$this->isRuleContainer($element)) {
                 $toRemoveTopLevel[] = $element;
             }
         }
@@ -290,9 +292,9 @@ final class Parser
             $newDocument->remove($element);
         }
 
-        // In RuleSets, keep only URL rules and named rules
+        // In RuleSets/DeclarationBlocks, keep only URL rules and named rules
         foreach ($newDocument->getContents() as $element) {
-            if ($element instanceof RuleSet) {
+            if ($this->isRuleContainer($element)) {
                 $toRemove = [];
                 foreach ($element->getRules() as $rule) {
                     $keepRule = false;
@@ -303,7 +305,7 @@ final class Parser
                     }
 
                     // Keep if matches named rules
-                    if (!empty($ruleNames) && in_array($rule->getRule(), $ruleNames, true)) {
+                    if (!empty($ruleNames) && in_array($this->getRulePropertyName($rule), $ruleNames, true)) {
                         $keepRule = true;
                     }
 
@@ -336,11 +338,14 @@ final class Parser
         foreach ($this->document->getContents() as $element) {
             if ($element instanceof DeclarationBlock) {
                 $elementSelectors = array_map(
-                    'strval',
+                    fn($sel) => $this->getSelectorString($sel),
                     $element->getSelectors()
                 );
                 if (array_intersect($selectors, $elementSelectors)) {
-                    $rules = array_map('strval', $element->getRules());
+                    $rules = array_map(
+                        fn($rule) => $this->getRuleString($rule),
+                        $this->getDeclarationBlockRules($element)
+                    );
                     $output .= implode('', $rules);
                 }
             }
@@ -472,5 +477,117 @@ final class Parser
         $css = $this->document->render();
         $parser = new SabberwormParser($css, Settings::create());
         return $parser->parse();
+    }
+
+    /**
+     * Internal: Detect if Sabberworm 9.x is installed.
+     *
+     * Uses class existence check for reliable version detection.
+     * Property\Declaration only exists in Sabberworm 9.2+.
+     *
+     * @return bool True if Sabberworm 9.2+, false if 8.x
+     */
+    private function isSabberworm9x(): bool
+    {
+        static $is9x = null;
+        if ($is9x === null) {
+            $is9x = class_exists('Sabberworm\\CSS\\Property\\Declaration');
+        }
+        return $is9x;
+    }
+
+    /**
+     * Internal: Get CSS property name from rule object (version-agnostic).
+     *
+     * Handles both Sabberworm 8.x (getRule) and 9.2+ (getPropertyName).
+     * Uses runtime method detection for maximum compatibility.
+     *
+     * @param mixed $rule Rule/Declaration object from Sabberworm
+     * @return string CSS property name (e.g., 'color', 'cursor')
+     */
+    private function getRulePropertyName($rule): string
+    {
+        if (method_exists($rule, 'getPropertyName')) {
+            return $rule->getPropertyName(); // Sabberworm 9.2+
+        }
+        return $rule->getRule(); // Sabberworm 8.x
+    }
+
+    /**
+     * Internal: Get rules from DeclarationBlock (version-agnostic).
+     *
+     * Handles structural change in Sabberworm 9.0 where DeclarationBlock
+     * no longer extends RuleSet and contains it as a property instead.
+     *
+     * @param DeclarationBlock $block Declaration block
+     * @return array<mixed> Array of Rule/Declaration objects
+     */
+    private function getDeclarationBlockRules(DeclarationBlock $block): array
+    {
+        // In 9.0+, DeclarationBlock contains RuleSet as property
+        if (method_exists($block, 'getRuleSet')) {
+            return $block->getRuleSet()->getRules();
+        }
+        // In 8.x, DeclarationBlock extends RuleSet directly
+        return $block->getRules();
+    }
+
+    /**
+     * Internal: Check if element is a RuleSet or DeclarationBlock (version-agnostic).
+     *
+     * In Sabberworm 8.x, DeclarationBlock extends RuleSet.
+     * In Sabberworm 9.0+, DeclarationBlock does NOT extend RuleSet.
+     * This method handles both cases for filtering operations.
+     *
+     * @param mixed $element Element from document
+     * @return bool True if element has rules that can be filtered
+     */
+    private function isRuleContainer($element): bool
+    {
+        return ($element instanceof RuleSet) || ($element instanceof DeclarationBlock);
+    }
+
+    /**
+     * Internal: Get selector string (version-agnostic).
+     *
+     * In Sabberworm 8.x, Selector has __toString().
+     * In Sabberworm 9.x, Selector doesn't have __toString(), use getSelector().
+     *
+     * @param mixed $selector Selector object from Sabberworm
+     * @return string Selector string (e.g., 'body', '.header')
+     */
+    private function getSelectorString($selector): string
+    {
+        // In 9.x, Selector no longer has __toString()
+        if (method_exists($selector, 'getSelector')) {
+            return $selector->getSelector();
+        }
+        // In 8.x, use __toString()
+        return (string) $selector;
+    }
+
+    /**
+     * Internal: Get rule string (version-agnostic).
+     *
+     * In Sabberworm 8.x, Rule has __toString().
+     * In Sabberworm 9.x, Declaration requires OutputFormat for render().
+     *
+     * @param mixed $rule Rule/Declaration object from Sabberworm
+     * @return string Rule string (e.g., 'color:red;')
+     */
+    private function getRuleString($rule): string
+    {
+        // In 9.x, render() requires OutputFormat parameter
+        if (method_exists($rule, 'render')) {
+            try {
+                // Try with OutputFormat (9.x)
+                return $rule->render(OutputFormat::createCompact());
+            } catch (Throwable $e) {
+                // Fall back to render() without args (8.x)
+                return $rule->render();
+            }
+        }
+        // Fallback to string cast
+        return (string) $rule;
     }
 }
