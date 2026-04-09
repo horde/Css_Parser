@@ -15,10 +15,9 @@
     "repositories": [],
     "require": {
         "php": "^8",
-        "sabberworm/php-css-parser": "^8.9",
+        "sabberworm/php-css-parser": "^8.9 || ^9.0",
         "horde/exception": "^3 || dev-FRAMEWORK_6_0"
     },
-    "require-dev": {},
     "suggest": {
         "ext-mbstring": "*"
     },
@@ -42,5 +41,6 @@
         "branch-alias": {
             "dev-FRAMEWORK_6_0": "2.x-dev"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }

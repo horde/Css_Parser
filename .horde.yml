@@ -27,7 +27,7 @@ dependencies:
   required:
     php: ^8
     composer:
-      sabberworm/php-css-parser: ^8.9
+      sabberworm/php-css-parser: ^8.9 || ^9.3
       horde/exception: ^3
   optional:
     ext:
@@ -38,7 +38,10 @@ autoload:
   classmap:
     - lib/
 vendor: horde
-keywords: []
+keywords:
+  - css
+  - sabberworm
+  - facade
 quality:
   phpstan:
     level: 9
