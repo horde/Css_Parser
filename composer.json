@@ -11,13 +11,19 @@
             "role": "lead"
         }
     ],
-    "time": "2026-03-31",
+    "keywords": [
+        "css",
+        "sabberworm",
+        "facade"
+    ],
+    "time": "2026-04-11",
     "repositories": [],
     "require": {
         "php": "^8",
-        "sabberworm/php-css-parser": "^8.9 || ^9.0",
+        "sabberworm/php-css-parser": "^8.9 || ^9.3",
         "horde/exception": "^3 || dev-FRAMEWORK_6_0"
     },
+    "require-dev": {},
     "suggest": {
         "ext-mbstring": "*"
     },
@@ -41,6 +47,5 @@
         "branch-alias": {
             "dev-FRAMEWORK_6_0": "2.x-dev"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
