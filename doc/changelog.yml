@@ -1,70 +1,14 @@
 ---
-2.0.0beta6:
-  api: 2.0.0beta1
-  state:
-    release: beta
-    api: beta
-  date: 2026-04-07
-  license:
-    identifier: LGPL-2.1-only
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    Add dual Sabberworm 8.x/9.x support via runtime autodetection.
-    Modern API (src/Parser.php) now works with both Sabberworm 8.9+ and 9.0+.
-    Legacy API (lib/Horde/Css/Parser.php) remains locked to Sabberworm 8.x.
-    See doc/SABBERWORM_COMPATIBILITY.md for migration guide.
-2.0.0alpha5:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-05
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha4:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2022-11-05
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [rla] Alpha Release for PHP 8.
-    |+
-2.0.0alpha3:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2021-03-13
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha2:
-  api: 2.0.0alpha1
-  state:
-    release: alpha
-    api: alpha
-  date: 2021-02-24
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |+
-2.0.0alpha1:
-  api: 2.0.0alpha1
+2.0.0:
+  api: 2.0.0
   state:
     release: stable
     api: stable
-  date: 2021-02-24
+  date: 2026-06-27
   license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: ~
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: "chore: refresh qc fixes and platform deps\nchore: Update workflow dependency"
 2.0.0-beta7:
   api: 2.0.0-beta7
   state:
@@ -74,9 +18,17 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    Merge pull request #7 from horde/feat/sabberworm-dual-version
-    feat: Support Sabberworm CSS Parser 9.3 / PHP 8.5 for modern interface
+  notes: "Merge pull request #7 from horde/feat/sabberworm-dual-version\nfeat: Support Sabberworm CSS Parser 9.3 / PHP 8.5 for modern interface"
+2.0.0beta6:
+  api: 2.0.0beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-07
+  license:
+    identifier: LGPL-2.1-only
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "Add dual Sabberworm 8.x/9.x support via runtime autodetection.\nModern API (src/Parser.php) now works with both Sabberworm 8.9+ and 9.0+.\nLegacy API (lib/Horde/Css/Parser.php) remains locked to Sabberworm 8.x.\nSee doc/SABBERWORM_COMPATIBILITY.md for migration guide.\n"
 2.0.0-beta6:
   api: 2.0.0-beta6
   state:
@@ -86,14 +38,7 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    fix: Add missing DetailsTrait to exception. Reaches PHPStan level 9.
-    style: php-cs-fixer run
-    feat: keepOnlyUrlRules, keepOnlyRulesByName and accompanying tests
-    chore(composer): composer.json will be updated from .horde.yml
-    Unbundle sabberworm/php-css-parser
-    chore: it was good while it lasted
-    fix: hotfix null issue in bundled css parser.
+  notes: "fix: Add missing DetailsTrait to exception. Reaches PHPStan level 9.\nstyle: php-cs-fixer run\nfeat: keepOnlyUrlRules, keepOnlyRulesByName and accompanying tests\nchore(composer): composer.json will be updated from .horde.yml\nUnbundle sabberworm/php-css-parser\nchore: it was good while it lasted\nfix: hotfix null issue in bundled css parser."
 2.0.0-beta5:
   api: 2.0.0-beta5
   state:
@@ -103,8 +48,7 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    chore: Drop internal class loader in Css Parser class.
+  notes: 'chore: Drop internal class loader in Css Parser class.'
 2.0.0-beta4:
   api: 2.0.0-beta4
   state:
@@ -114,8 +58,7 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    feat: Modernize and more complete facade between sabberworm and horde
+  notes: 'feat: Modernize and more complete facade between sabberworm and horde'
 2.0.0-beta3:
   api: 2.0.0-beta3
   state:
@@ -125,8 +68,7 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    feat: Modernize and more complete facade between sabberworm and horde
+  notes: 'feat: Modernize and more complete facade between sabberworm and horde'
 2.0.0-beta2:
   api: 2.0.0-beta2
   state:
@@ -136,8 +78,7 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    feat: Modernize and more complete facade between sabberworm and horde
+  notes: 'feat: Modernize and more complete facade between sabberworm and horde'
 2.0.0-beta1:
   api: 2.0.0-beta1
   state:
@@ -147,17 +88,57 @@
   license:
     identifier: LGPL-2.1-only
     uri: https://spdx.org/licenses/LGPL-2.1-only.html
-  notes: |-
-    Merge pull request #1 from horde/dependabot/composer/bundle/sabberworm/php-css-parser-7.0.4
-    Bump sabberworm/php-css-parser from 7.0.3 to 7.0.4 in /bundle
-    Development mode for Css_Parser-2.0.0alpha5
-    Released Css_Parser-2.0.0alpha4
-    Update metadata and workflows for PHP 8 support
-    Add CI job for satis repo update
-    Update bootstrap.php
-    ci.yml added, bootstrap.php adjusted
-    no errors left
-    Development mode for Css_Parser-2.0.0alpha5
+  notes: "Merge pull request #1 from horde/dependabot/composer/bundle/sabberworm/php-css-parser-7.0.4\nBump sabberworm/php-css-parser from 7.0.3 to 7.0.4 in /bundle\nDevelopment mode for Css_Parser-2.0.0alpha5\nReleased Css_Parser-2.0.0alpha4\nUpdate metadata and workflows for PHP 8 support\nAdd CI job for satis repo update\nUpdate bootstrap.php\nci.yml added, bootstrap.php adjusted\nno errors left\nDevelopment mode for Css_Parser-2.0.0alpha5"
+2.0.0alpha5:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-05
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha4:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2022-11-05
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: "[rla] Alpha Release for PHP 8.\n|+\n"
+2.0.0alpha3:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-03-13
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha2:
+  api: 2.0.0alpha1
+  state:
+    release: alpha
+    api: alpha
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: ''
+2.0.0alpha1:
+  api: 2.0.0alpha1
+  state:
+    release: stable
+    api: stable
+  date: 2021-02-24
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: null
 1.0.11:
   api: 1.0.0
   state:
@@ -167,8 +148,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Update to PHP-CSS-Parser 7.0.3.
+  notes: "[jan] Update to PHP-CSS-Parser 7.0.3.\n"
 1.0.10:
   api: 1.0.0
   state:
@@ -178,8 +158,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Fix upstream regression causing infite loops with empty CSS documents (Bug #14318).
+  notes: "[jan] Fix upstream regression causing infite loops with empty CSS documents (Bug #14318).\n"
 1.0.9:
   api: 1.0.0
   state:
@@ -189,8 +168,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Update to PHP-CSS-Parser 7.0.2 (Request #14297).
+  notes: "[jan] Update to PHP-CSS-Parser 7.0.2 (Request #14297).\n"
 1.0.8:
   api: 1.0.0
   state:
@@ -200,8 +178,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Mark PHP 7 as supported.
+  notes: "[jan] Mark PHP 7 as supported.\n"
 1.0.7:
   api: 1.0.0
   state:
@@ -211,9 +188,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Prevent segfault due to non-ascii characters on some systems.
-    [jan] Fix PHP7 error because of reserved "String".
+  notes: "[jan] Prevent segfault due to non-ascii characters on some systems.\n[jan] Fix PHP7 error because of reserved \"String\".\n"
 1.0.6:
   api: 1.0.0
   state:
@@ -223,8 +198,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Update PHP-CSS-Parser lib to latest dev to fix issues on PHP < 5.3.9 (Bug #13792).
+  notes: "[mms] Update PHP-CSS-Parser lib to latest dev to fix issues on PHP < 5.3.9 (Bug #13792).\n"
 1.0.5:
   api: 1.0.0
   state:
@@ -234,8 +208,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Use composer to generate the distributed version of the PHP-CSS-Parser package.
+  notes: "[mms] Use composer to generate the distributed version of the PHP-CSS-Parser package.\n"
 1.0.4:
   api: 1.0.0
   state:
@@ -245,8 +218,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Fixed comments parsing.
+  notes: "[mms] Fixed comments parsing.\n"
 1.0.3:
   api: 1.0.0
   state:
@@ -256,8 +228,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Merge from upstream - handle keywords/dimensions case-insensitively.
+  notes: "[mms] Merge from upstream - handle keywords/dimensions case-insensitively.\n"
 1.0.2:
   api: 1.0.0
   state:
@@ -267,8 +238,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [mms] Performance optimizations in the parser.
+  notes: "[mms] Performance optimizations in the parser.\n"
 1.0.1:
   api: 1.0.0
   state:
@@ -278,8 +248,7 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    [jan] Fix certain sizes reduced by factor ten (Bug #12462).
+  notes: "[jan] Fix certain sizes reduced by factor ten (Bug #12462).\n"
 1.0.0:
   api: 1.0.0
   state:
@@ -289,5 +258,4 @@
   license:
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First release for Horde 5.
+  notes: "First release for Horde 5.\n"

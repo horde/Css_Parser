@@ -16,7 +16,7 @@
         "sabberworm",
         "facade"
     ],
-    "time": "2026-04-11",
+    "time": "2026-06-27",
     "repositories": [],
     "require": {
         "php": "^8",
