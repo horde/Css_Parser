@@ -8,8 +8,7 @@ description: >-
 list: dev
 type: library
 authors:
-  -
-    name: Michael Slusarz
+  - name: Michael Slusarz
     user: slusarz
     email: slusarz@horde.org
     active: false
@@ -45,3 +44,27 @@ keywords:
 quality:
   phpstan:
     level: 9
+ci-platform:
+  '8.0':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.1':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.2':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.3':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.4':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.5':
+    - php: ^7.4 || ^8
+    - ext-iconv
+  '8.6':
+    - php: ^7.4 || ^8
+    - ext-iconv
+ci-platform-flags:
+  needs_installer_plugin: false
